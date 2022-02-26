@@ -357,7 +357,7 @@ class SearchSpaceModel(object):
                 if self.noise:
                     Y_pred = gp_model.predict(X)[0]
                     noiseless_gp_model = GPRegression(X, Y_pred, kernel=gp_model.kern)
-                    noiseless_gp_model.variance.fix(0)
+                    noiseless_gp_model.kern.variance.fix(0)
             except np.linalg.LinAlgError as error:
                 continue
             else:
